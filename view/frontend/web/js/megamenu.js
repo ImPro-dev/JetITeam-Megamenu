@@ -62,7 +62,6 @@ define([
             $('.navigation .parent').collapsible().collapsible('destroy');
             $('.mm-submenu, .submenu', '.navigation .parent:not(.level0)').show();
             this.refresh();
-            console.log(1);
         },
 
         _subCategoriesCollapseInit: function () {
@@ -70,7 +69,6 @@ define([
                 header: "> a",
                 content: ".submenu, .mm-submenu"
             });
-            console.log(2);
         },
 
         _mobileMenu: function () {

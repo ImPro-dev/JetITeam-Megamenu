@@ -18,7 +18,9 @@ class Category extends Entity
     {
         if (!$this->_subCategory) {
             $nodes = $this->getNode()->getAllChildNodes();
-            $this->_subCategory = $nodes['category-node-' . $this->getValue()];
+            if(array_key_exists('category-node-' . $this->getValue(), $nodes)) {
+                $this->_subCategory = $nodes['category-node-' . $this->getValue()];
+            }
         }
         return $this->_subCategory;
     }
