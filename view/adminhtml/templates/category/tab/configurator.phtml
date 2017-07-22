@@ -12,7 +12,8 @@
             "data":"<?php echo $this->getConfiguredValue()?addslashes($this->getConfiguredValue()):'{}'; ?>",
             "staticBlocks":"<?php echo $this->getStaticBlocksJson(); ?>",
             "level":<?php echo $this->getCategoryLevel(); ?>,
-            "baseUrl":"<?php echo $block->getBaseUrl(); ?>"
+            "baseUrl":"<?php echo $block->getBaseUrl(); ?>",
+            "adminUrl":"<?php echo $block->getAdminUrl(); ?>"
 		}
     }
 }

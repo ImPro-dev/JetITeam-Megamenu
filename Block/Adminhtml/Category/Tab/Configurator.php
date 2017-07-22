@@ -1,7 +1,7 @@
 <?php
 namespace JetITeam\Megamenu\Block\Adminhtml\Category\Tab;
 
-use JetITeam\Megamenu\Helper\Data;
+use \Magento\Backend\Helper\Data;
 
 class Configurator extends \Magento\Backend\Block\Template
 {
@@ -13,13 +13,17 @@ class Configurator extends \Magento\Backend\Block\Template
 
     protected $registry;
 
+    protected $helperBackend;
+
     public function __construct(
+        Data $helperBackend,
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Catalog\Model\Category\Attribute\Source\Page $staticBlocksSource,
         \Magento\Framework\Registry $registry,
         array $data = []
     ) {
         parent::__construct($context, $data);
+        $this->helperBackend = $helperBackend;
         $this->registry = $registry;
         $this->_staticBlocksSource = $staticBlocksSource;
     }
@@ -58,5 +62,10 @@ class Configurator extends \Magento\Backend\Block\Template
     public function getCategoryLevel()
     {
         return $this->getCategory()->getLevel();
+    }
+
+    public function getAdminUrl()
+    {
+        echo $this->helperBackend->getHomePageUrl();
     }
 }

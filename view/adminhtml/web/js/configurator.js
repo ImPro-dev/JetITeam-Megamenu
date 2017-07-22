@@ -440,7 +440,7 @@ define([
                     }]
             });
             modal.modal('openModal');
-            widgetTools.openDialog(self.options.baseUrl + 'admin/admin/widget/index/widget_target_id/widget_content' + self.counter);
+            widgetTools.openDialog(self.options.adminUrl + 'widget/index/widget_target_id/widget_content' + self.counter);
         },
         addColumnButtonClick: function (e) {
             var callBack = {
