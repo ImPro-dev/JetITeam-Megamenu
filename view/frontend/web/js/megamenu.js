@@ -12,7 +12,6 @@ define([
         },
 
         _create: function() {
-            console.log(34);
             var megamenu = $('.jetiteam-megamenu', this.element);
 
             this._mobileMenu();
@@ -26,7 +25,6 @@ define([
         },
 
         _init: function () {
-            this._super();
             var mobileBreakpoint = this.options.mobileBreakpoint;
             this.delay = this.options.delay;
 
@@ -40,7 +38,6 @@ define([
                     media: '(max-width: ' + mobileBreakpoint + 'px)',
                     entry: $.proxy(function () {
                         this._toggleMobileMode();
-                        console.log(22);
                     }, this),
                     exit: $.proxy(function () {
                         this._toggleDesktopMode();
