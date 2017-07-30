@@ -7,7 +7,12 @@ define([
 
     $.widget('JetITeam.megamenu', $.mage.menu, {
 
+        options: {
+            mobileBreakpoint: 767,
+        },
+
         _create: function() {
+            console.log(34);
             var megamenu = $('.jetiteam-megamenu', this.element);
 
             this._mobileMenu();
@@ -18,6 +23,32 @@ define([
 
         _setOption: function( key, value ) {
             this._super( "_setOption", key, value );
+        },
+
+        _init: function () {
+            this._super();
+            var mobileBreakpoint = this.options.mobileBreakpoint;
+            this.delay = this.options.delay;
+
+            if (this.options.expanded === true) {
+                this.isExpanded();
+            }
+
+
+            if (this.options.responsive === true) {
+                mediaCheck({
+                    media: '(max-width: ' + mobileBreakpoint + 'px)',
+                    entry: $.proxy(function () {
+                        this._toggleMobileMode();
+                        console.log(22);
+                    }, this),
+                    exit: $.proxy(function () {
+                        this._toggleDesktopMode();
+                    }, this)
+                });
+            }
+
+            this._assignControls()._listen();
         },
 
         toggle: function () {
@@ -75,11 +106,12 @@ define([
             var topmenu = $('nav.jetiteam-top-navigation');
             if(topmenu.length) return false;
 
+            var mobileBreakpoint = this.options.mobileBreakpoint;
             var nav = $('nav.mobile-only');
             var navDesktop = $(this.element).parent('.desktop-only');
 
             mediaCheck({
-                media: '(min-width: 767px)',
+                media: '(min-width: ' + mobileBreakpoint + 'px)',
                 entry: function () {
                     nav.removeClass('active');
                     navDesktop.addClass('active');
