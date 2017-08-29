@@ -7,7 +7,7 @@ if ($category):
     $cssClass = $this->getCssClass($category);
     ?>
     <ul class="mm-submenu level1">
-        <li class="item<?php echo $cssClass; ?> ui-menu-item<?php echo (count($subCategories)) ? ' parent' : ''; ?>">
+        <li class="item <?php echo $cssClass; ?> ui-menu-item<?php echo (count($subCategories)) ? ' parent' : ''; ?>">
             <?php if ($image = $this->getImage($category)) : ?>
                 <span class="mm-image"><img src="<?php echo $image; ?>" alt=""></span>
             <?php endif; ?>
@@ -21,7 +21,7 @@ if ($category):
                 <?php foreach ($subCategories as $subCategory): ?>
                     <?php $subCategoryCssClass = $this->getCssClass($subCategory); ?>
                     <?php $subSubCategories = $subCategory->getChildren()->getIterator(); ?>
-                    <li class="item<?php echo (count($subCategory->getChildren())) ? ' parent' : ''; ?><?php echo $subCategoryCssClass; ?> ui-menu-item">
+                    <li class="item<?php echo (count($subSubCategories)) ? ' parent' : ''; ?><?php echo $subCategoryCssClass; ?> ui-menu-item">
                         <?php if ($label = $subCategory->getMmLabel()): ?>
                             <span class="mm-label"><?php echo $label; ?></span>
                         <?php endif; ?>
